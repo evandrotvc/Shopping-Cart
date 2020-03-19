@@ -6,8 +6,32 @@ var logger = require('morgan');
 var expressHbs = require('express-handlebars')
 var indexRouter = require('./routes/index');
 //var usersRouter = require('./routes/users');
+var mongoose = require('mongoose')
 
 var app = express();
+
+//mongoose.connect('localhost:27017/shopping')
+mongoose.connect('mongodb://localhost:27017/shopping' , 
+{ 
+  useNewUrlParser: true ,
+  useUnifiedTopology: true
+
+})
+
+/* Cria coleções Product no database shopping
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/shopping";
+
+MongoClient.connect(url, { useUnifiedTopology: true } ,function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("shopping");
+  dbo.createCollection("Product", function(err, res) {
+    if (err) throw err;
+    console.log("Collection created!");
+    db.close();
+});
+})*/
+
 
 // view engine setup
 app.engine('.hbs' , expressHbs({defaultLayout: 'layout' , extname: '.hbs' }))

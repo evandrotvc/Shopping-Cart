@@ -1,0 +1,24 @@
+.thumbnail{
+  padding-top: 5px;
+  border-width: medium;
+  border-style: solid;
+  border-color: black;
+}
+.thumbnail img {
+  max-height: 200px;
+  max-width: 120px;
+}
+
+.thumbnail .description {
+  color: blue;
+}
+
+.thumbnail .price {
+  padding-left: 120px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/*.thumbnail .btn {
+
+}*/
