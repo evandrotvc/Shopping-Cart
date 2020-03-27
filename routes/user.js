@@ -1,5 +1,8 @@
 var express = require('express');
 var router = express.Router();
+const Order = require('../models/order')
+const Cart = require('../models/cart')
+
 
 var csrf = require('csurf')
 var csurfProtection = csrf() // chave de segurança
@@ -9,7 +12,18 @@ var passport = require('passport')
 
 
 router.get('/profile' ,isLoggedIn, function(req , res, next){
-    res.render('user/profile')
+    Order.find({_id: "5e7c05bec79c909976666fb6"} , function(err,orders){ // orders é um array      
+      if(err){
+        return res.write('Error')
+      }
+      var cart 
+      //console.log(orders)
+      orders.forEach(function(order){ // percorre o items do cart.
+        cart = new Cart(order.cart)
+        order.items = cart.generateArray()
+      })
+      res.render('user/profile', { orders : orders})
+    })  
   })
 
 router.get('/logout' , isLoggedIn,function(req, res , next){
@@ -34,7 +48,8 @@ router.get('/signup' , function(req, res , next){
         successRedirect: '/user/profile',
         failureRedirect: '/user/signup',
         failureFlash: true
-      })(req, res, next);
+      })(req, res, next)
+       
   })
   
   
@@ -51,7 +66,7 @@ router.get('/signup' , function(req, res , next){
         successRedirect: '/user/profile',
         failureRedirect: '/user/signin',
         failureFlash: true
-      })(req, res, next);
+      })(req, res, next)
   })
 
 

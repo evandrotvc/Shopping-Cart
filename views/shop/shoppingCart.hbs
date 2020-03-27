@@ -8,8 +8,8 @@
                         <strong>{{this.item.title}}</strong>
                         <span class = "label label-sucess">${{this.price}}</span>
                         <div class = "btn-group">
-                            <button class="btn btn-primary btn-xs "  type = "button" aria-haspopup="true" aria-expanded="false">Reduce by 1  </button>
-                            <button class="btn btn-primary btn-xs "  type = "button" aria-haspopup="true" aria-expanded="false">Remove all  </button>
+                            <a type = "button" class="btn btn-info btn-xs"  href= "/reduce/{{this.item._id}}"  aria-haspopup="true" aria-expanded="false">Reduce by 1  </a>
+                            <a type = "button" class="btn btn-info btn-xs " href= "/removeAll/{{this.item._id}}"  aria-haspopup="true" aria-expanded="false">Remove all  </a>
                         <!--    <ul class = "dropdown-menu" >
                                 <li> <a class="dropdown-item" href = "#">Reduce by 1</a> </li>
                                 <li> <a class="dropdown-item" href = "#">Remove all</a></li>

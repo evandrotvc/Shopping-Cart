@@ -13,6 +13,21 @@ module.exports = function(oldCart){
         this.totalQty++
         this.totalPrice += storeItem.item.price
     }
+    this.reduceByOne = function(id){ // remove one item of the cart. page: /shopping
+        this.items[id].qty--
+        this.items[id].price -= this.items[id].item.price
+        this.totalQty--
+        this.totalPrice -= this.items[id].item.price
+
+        if(this.items[id].qty <= 0 ){
+            delete this.items[id]
+        }
+    }
+    this.removeAll = function(id){ // remove all qty of the same items
+        this.totalQty -= this.items[id].qty
+        this.totalPrice -= this.items[id].price
+        delete this.items[id]
+    }
 
     this.generateArray = function(){
         var arr = []

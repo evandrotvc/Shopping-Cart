@@ -1,6 +1,6 @@
+//var stripe = Stripe('pk_test_WmQuWZhFbFViawgj7A8u7M4700B3VhCAMo');
 
-
-Stripe.setPublishableKey('your_public_key')
+Stripe.setPublishableKey('pk_test_WmQuWZhFbFViawgj7A8u7M4700B3VhCAMo')
 
 
 var $form = $('#checkout-form')
